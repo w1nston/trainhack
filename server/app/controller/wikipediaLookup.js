@@ -41,7 +41,7 @@ module.exports = {
         const findZip = /\|postnummer\s*\=\s*([\d\s]*\d)*/
         const foundZip = infoboxText.match(findZip)
 
-        const findRikt = /\|riktnummer\s*\=\s*([\d]*)/
+        const findRikt = /\|riktnummer\s*\=\s*(\d*)/
         const foundRikt = infoboxText.match(findRikt)
 
         const findFounded = /\|grundades\s*\=\s*(\d*)/
@@ -51,7 +51,7 @@ module.exports = {
         response.json({
           county: foundArea[1],
           zip: foundZip[1],
-          phoneCode: findRikt[1],
+          phoneCode: foundRikt[1],
           founded: foundFounded[1],
         })
       })
