@@ -20,12 +20,13 @@ function errorLogger(error) {
 }
 
 function parseJSONFromQuestionsResponse(response) {
-  console.log('response', response);
   return response;
 }
 
-function parseQuestionsResponse() {
-  return response.json().then(parseJSONFromQuestionsResponse).catch(errorLogger);
+function parseQuestionsResponse(response) {
+  return response.json()
+    .then(parseJSONFromQuestionsResponse)
+    .catch(errorLogger);
 }
 
 export const trainhackAPI = {
