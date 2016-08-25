@@ -17,8 +17,6 @@ const store = createStore(
 
 sagaMiddleware.run(trainSearchSaga);
 
-// store.dispatch(requestBooks()); // TODO Initial fetch request
-
 ReactDOM.render(
   <Provider store={store}>
     <TrainhackApp />

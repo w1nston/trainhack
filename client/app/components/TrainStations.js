@@ -2,11 +2,11 @@ import React from 'react';
 import TrainStation from './TrainStation';
 import FontAwesome from './FontAwesome';
 
-function renderTrainStation(trainStation, index) {
-  return <TrainStation stationName={trainStation} key={index} />;
-}
+// function renderTrainStation(trainStation, index) {
+//   return <TrainStation stationName={trainStation} key={index} />;
+// }
 
-function renderTrainStations(trainStations, isFetching) {
+function renderTrainStations(trainStations, isFetching, onClick) {
   if (isFetching === true) {
     return (
       <tr>
@@ -16,10 +16,17 @@ function renderTrainStations(trainStations, isFetching) {
       </tr>
     );
   }
-  return trainStations.map(renderTrainStation);
+
+  return trainStations.map((station, index) => {
+    function handleClick(event) {
+      event.preventDefault();
+      console.log(station);
+    }
+    return <TrainStation stationName={station} onClick={handleClick} key={index} />;
+  });
 }
 
-export default function TrainStations({ trainStations, isFetching }) {
+export default function TrainStations({ trainStations, isFetching, onClick }) {
   return (
     <div className="train-stations">
       <table>
@@ -29,7 +36,7 @@ export default function TrainStations({ trainStations, isFetching }) {
         </tr>
         </thead>
         <tbody>
-        {renderTrainStations(trainStations, isFetching)}
+        {renderTrainStations(trainStations, isFetching, onClick)}
         </tbody>
       </table>
     </div>

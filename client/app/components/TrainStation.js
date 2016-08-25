@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function TrainStation({ stationName }) {
+export default function TrainStation({ stationName, onClick }) {
   return (
     <tr>
       <td>
-        <a href="#">{ stationName }</a>
+        <a href="#" onClick={onClick}>{ stationName }</a>
       </td>
     </tr>
   );
