@@ -13,8 +13,18 @@ export function *watchFetchTrainData() {
   yield call(takeEvery, types.SEARCH_TRAIN_NUMBER, fetchTrainData);
 }
 
+export function *fetchStationQuestions(action) {
+  const questions = yield(call(trainhackAPI.fetchStationQuiz, action.stationName));
+  yield put(actions.fetchStationQuestionsSuccess(questions));
+}
+
+export function *watchFetchStationQuestions() {
+  yield call(takeEvery, types.FETCH_STATION_QUESTIONS, fetchStationQuestions);
+}
+
 export default function *trainSearchSaga() {
   yield [
     fork(watchFetchTrainData),
+    fork(watchFetchStationQuestions)
   ];
 }
