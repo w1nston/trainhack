@@ -2,13 +2,26 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import TrainhackApp from './app/components/TrainhackApp';
+import rootReducer from './app/reducers';
+import trainSearchSaga from './app/sagas/trainSearchSaga';
 
-const store = createStore((state, action) => ({ message: 'I need a reducer!' }));
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(trainSearchSaga);
+
+// store.dispatch(requestBooks()); // TODO Initial fetch request
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>Put your App component here</div>
+    <TrainhackApp />
   </Provider>,
   document.getElementById('root')
 );
