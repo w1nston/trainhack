@@ -27,3 +27,10 @@ export function fetchStationQuestions(stationName) {
     stationName,
   };
 }
+
+export function fetchStationQuestionsSuccess(questions) {
+  return {
+    type: types.FETCH_STATION_QUESTIONS_SUCCESS,
+    questions,
+  };
+}

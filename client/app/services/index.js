@@ -2,7 +2,8 @@ import 'whatwg-fetch';
 
 // const url = 'http://10.7.64.110:3030/trainlookup/';
 // const url = 'http://10.101.2.124:3030/trainlookup/';
-const url = 'http://localhost:3030/trainlookup/';
+const trainDataUrl = 'http://localhost:3030/trainlookup/';
+const stationQuestionUrl = 'http://localhost:3030/questions/';
 
 function parseJSONFromResponse(response) {
   return response
@@ -14,10 +15,27 @@ function parseResponse(response) {
   return response.json().then(parseJSONFromResponse);
 }
 
+function errorLogger(error) {
+  console.log(error);
+}
+
+function parseJSONFromQuestionsResponse(response) {
+  console.log('response', response);
+}
+
+function parseQuestionsResponse() {
+  return response.json().then(parseJSONFromQuestionsResponse);
+}
+
 export const trainhackAPI = {
   fetchTrainData(trainNumber) {
-    return fetch(url + trainNumber)
+    return fetch(trainDataUrl + trainNumber)
       .then(parseResponse)
-      .catch(error => console.log('error!', error));
-  }
+      .catch(errorLogger);
+  },
+  fetchStationQuiz(stationName) {
+    return fetch(stationQuestionUrl + stationName)
+      .then(parseQuestionsResponse)
+      .catch(errorLogger)
+  },
 };

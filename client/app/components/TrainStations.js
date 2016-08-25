@@ -6,7 +6,7 @@ function renderTrainStation(trainStation, index) {
   return <TrainStation stationName={trainStation} key={index} />;
 }
 
-function renderTrainStations(trainStations, isFetching ) {
+function renderTrainStations(trainStations, isFetching) {
   if (isFetching === true) {
     return (
       <tr>
@@ -21,15 +21,17 @@ function renderTrainStations(trainStations, isFetching ) {
 
 export default function TrainStations({ trainStations, isFetching }) {
   return (
-    <table>
-      <thead>
-      <tr>
-        <th>Station</th>
-      </tr>
-      </thead>
-      <tbody>
-      {renderTrainStations(trainStations, isFetching)}
-      </tbody>
-    </table>
+    <div className="train-stations">
+      <table>
+        <thead>
+        <tr>
+          <th>Station</th>
+        </tr>
+        </thead>
+        <tbody>
+        {renderTrainStations(trainStations, isFetching)}
+        </tbody>
+      </table>
+    </div>
   );
 }

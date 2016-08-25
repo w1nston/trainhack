@@ -8,7 +8,7 @@ export default function TrainSearchForm({ trainNumber, onSubmit }) {
   }
 
   return (
-    <div>
+    <div className="train-search-form">
       <TrainNumberInput />
       <SubmitButton onSubmit={handleSubmit} label="Search" />
     </div>
