@@ -36,11 +36,24 @@ module.exports = {
         const infoboxText = getInfoboxTextFromPage(getFirstPageFromResponse(pages));
 
         const findArea = /\|län\s*\=\s*\[\[(.*)\]\]/
-        const found = infoboxText.match(findArea)
-        response.json(found[1])
-        //console.log('infoboxText: ', infoboxText);
+        const foundArea = infoboxText.match(findArea)
 
-        response.json(infoboxText);
+        const findZip = /\|postnummer\s*\=\s*([\d\s]*\d)*/
+        const foundZip = infoboxText.match(findZip)
+
+        const findRikt = /\|riktnummer\s*\=\s*([\d]*)/
+        const foundRikt = infoboxText.match(findRikt)
+
+        const findFounded = /\|grundades\s*\=\s*(\d*)/
+        const foundFounded = infoboxText.match(findFounded)
+
+        console.log('infoboxText: ', infoboxText);
+        response.json({
+          county: foundArea[1],
+          zip: foundZip[1],
+          phoneCode: findRikt[1],
+          founded: foundFounded[1],
+        })
       })
       .catch(function onError(error) {
         // TODO
