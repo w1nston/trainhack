@@ -13,3 +13,10 @@ export function searchForTrain(trainNumber) {
     trainNumber,
   };
 }
+
+export function fetchTrainDataSuccess(trainData) {
+  return {
+    type: types.FETCH_TRAIN_DATA_SUCCESS,
+    trainData,
+  };
+}
