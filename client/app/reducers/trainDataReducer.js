@@ -13,7 +13,6 @@ export function trainDataReducer(state = initialState, action = {}) {
         isFetching: true,
       };
     case types.FETCH_TRAIN_DATA_SUCCESS:
-      console.log('REDUCE BABY!', action);
       return {
         trainStations: action.trainStations,
         isFetching: false,

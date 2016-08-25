@@ -4,7 +4,7 @@ export default function TrainStation({ stationName }) {
   return (
     <tr>
       <td>
-      { stationName }
+        <a href="#">{ stationName }</a>
       </td>
     </tr>
   );

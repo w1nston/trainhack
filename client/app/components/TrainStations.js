@@ -2,14 +2,11 @@ import React from 'react';
 import TrainStation from './TrainStation';
 import FontAwesome from './FontAwesome';
 
-function renderTrainStation(trainStation) {
-  console.log('renderTrainStation', trainStation);
-  return <TrainStation stationName={trainStation} />;
+function renderTrainStation(trainStation, index) {
+  return <TrainStation stationName={trainStation} key={index} />;
 }
 
 function renderTrainStations(trainStations, isFetching ) {
-  console.log('TrainStations trainStations', trainStations);
-  console.log('TrainStations isFetching', isFetching);
   if (isFetching === true) {
     return (
       <tr>

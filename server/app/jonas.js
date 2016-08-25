@@ -1,3 +1,4 @@
+/*
 const superAgent = require('superagent');
 const baseUrl = 'http://sv.wikipedia.org/w/api.php';
 
@@ -100,7 +101,7 @@ module.exports = function wikipediaController() {
         });
 
       // TODO below
-      /*superAgent.get(baseUrl)
+      /!*superAgent.get(baseUrl)
        .set({
        Accept: 'application/json'
        })
@@ -125,8 +126,9 @@ module.exports = function wikipediaController() {
        // TODO
        console.error('ERROR! error!', error);
        response.json({ error: error });
-       });*/
+       });*!/
 
     }
   };
 };
+*/

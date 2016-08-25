@@ -20,3 +20,10 @@ export function fetchTrainDataSuccess(trainStations) {
     trainStations,
   };
 }
+
+export function fetchStationQuestions(stationName) {
+  return {
+    type: types.FETCH_STATION_QUESTIONS,
+    stationName,
+  };
+}

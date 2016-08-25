@@ -9,4 +9,12 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    onClick() {
+      dispatch()
+    }
+  };
+}
+
 export default connect(mapStateToProps)(TrainStations);

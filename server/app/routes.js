@@ -1,4 +1,5 @@
 const trainLookup = require('./controller/trainLookup')
+const wikipediaLookup = require('./controller/wikipediaLookup');
 
 module.exports = function (router) {
   router.use(function(req, res, next) {
@@ -10,6 +11,10 @@ module.exports = function (router) {
   router.get('/trainlookup/:trainNumber', (req, res) => {
     trainLookup.fetchFromToLocation(res, req.params.trainNumber)
   })
+
+  router.get('/questions/:stationName', (req, res) => {
+    wikipediaLookup.fetchQuestions(res, req.params.stationName);
+  });
 
 
   router.post('/mock/data', (req, res) => {
