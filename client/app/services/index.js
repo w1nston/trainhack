@@ -21,6 +21,7 @@ function errorLogger(error) {
 
 function parseJSONFromQuestionsResponse(response) {
   console.log('response', response);
+  return response;
 }
 
 function parseQuestionsResponse() {
