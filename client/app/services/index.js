@@ -25,7 +25,7 @@ function parseJSONFromQuestionsResponse(response) {
 }
 
 function parseQuestionsResponse() {
-  return response.json().then(parseJSONFromQuestionsResponse);
+  return response.json().then(parseJSONFromQuestionsResponse).catch(errorLogger);
 }
 
 export const trainhackAPI = {

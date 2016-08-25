@@ -4,7 +4,9 @@ export default function StationQuiz({ stationName, questions, isFetching }) {
 
   return (
     <div className="station-quiz">
-      Quiz goes here
+      <p>Quiz</p>
+      <div>{ stationName }</div>
+      
     </div>
   );
 }

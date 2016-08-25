@@ -9,20 +9,14 @@ const initialState = {
 export function stationQuizReducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.FETCH_STATION_QUESTIONS:
-
-      console.log('FETCH_STATION_QUESTIONS action', action);
-
       return {
         stationName: action.stationName,
         isFetching: true,
         questions: state.questions,
       };
     case types.FETCH_STATION_QUESTIONS_SUCCESS:
-
-      console.log('FETCH_STATION_QUESTIONS_SUCCESS action', action);
-
       return {
-        stationName: action.stationName,
+        stationName: state.stationName,
         isFetching: false,
         questions: action.questions,
       };

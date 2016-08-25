@@ -7,21 +7,13 @@ import FontAwesome from './FontAwesome';
 // }
 
 function renderTrainStations(trainStations, isFetching, onClick) {
-  if (isFetching === true) {
-    return (
-      <tr>
-        <td colSpan="2">
-          <FontAwesome icons={['spinner', 'spin', '3x', 'fw']} />
-        </td>
-      </tr>
-    );
-  }
 
   return trainStations.map((station, index) => {
     function handleClick(event) {
       event.preventDefault();
-      console.log(station);
+      onClick(station);
     }
+
     return <TrainStation stationName={station} onClick={handleClick} key={index} />;
   });
 }
