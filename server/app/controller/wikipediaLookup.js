@@ -15,6 +15,8 @@ function getInfoboxTextFromPage(page) {
 
 module.exports = {
   fetchQuestions(response, stationName) {
+    console.log(stationName)
+    stationName = stationName.replace(" C", "");
     superAgent.get(baseUrl)
       .set({
         Accept: 'application/json'
@@ -24,7 +26,7 @@ module.exports = {
         prop: 'revisions',
         rvprop: 'content',
         format: 'json',
-        titles: request.query.city,
+        titles: stationName,
         rvsection: '0'
       })
       .then(function onSuccess(data) {
@@ -32,7 +34,11 @@ module.exports = {
         const pages = respObj.query.pages;
 
         const infoboxText = getInfoboxTextFromPage(getFirstPageFromResponse(pages));
-        console.log('infoboxText: ', infoboxText);
+
+        const findArea = /\|län\s*\=\s*\[\[(.*)\]\]/
+        const found = infoboxText.match(findArea)
+        response.json(found[1])
+        //console.log('infoboxText: ', infoboxText);
 
         response.json(infoboxText);
       })
