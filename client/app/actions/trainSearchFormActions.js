@@ -14,9 +14,9 @@ export function searchForTrain(trainNumber) {
   };
 }
 
-export function fetchTrainDataSuccess(trainData) {
+export function fetchTrainDataSuccess(trainStations) {
   return {
     type: types.FETCH_TRAIN_DATA_SUCCESS,
-    trainData,
+    trainStations,
   };
 }

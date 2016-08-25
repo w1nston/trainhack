@@ -5,10 +5,9 @@ import 'whatwg-fetch';
 const url = 'http://localhost:3030/trainlookup/';
 
 function parseJSONFromResponse(response) {
-  const stations = response
+  return response
     .filter(station => station.type === 'Avgang')
     .map(station => station.LocationSignature);
-  console.log('stations:', stations);
 }
 
 function parseResponse(response) {
