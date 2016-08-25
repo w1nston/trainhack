@@ -1,6 +1,6 @@
 const superAgent = require('superagent');
-//const trafikverketDataUrl = 'http://api.trafikinfo.trafikverket.se/v1/data.json'
-//const trafikverketStationsUrl = 'http://api.trafikinfo.trafikverket.se/v1/data.json'
+// const trafikverketDataUrl = 'http://api.trafikinfo.trafikverket.se/v1/data.json'
+// const trafikverketStationsUrl = 'http://api.trafikinfo.trafikverket.se/v1/data.json'
 const trafikverketDataUrl = 'http://localhost:3030/mock/data'
 const trafikverketStationsUrl = 'http://localhost:3030/mock/stations'
 const apiKey = 'f2cef9d56c3e42749f57856e48cc2884';
@@ -38,11 +38,16 @@ module.exports = {
 
             var results = dataObject.RESPONSE.RESULT[0].TrainAnnouncement
 
-            const sortedResults = results.sort((previous, current) => {
-              return Date.parse(previous.AdvertisedTimeAtLocation) > Date.parse(current.AdvertisedTimeAtLocation)
-            })
+            // const sortedResults = results.sort((previous, current) => {
+            //   return Date.parse(previous.AdvertisedTimeAtLocation) > Date.parse(current.AdvertisedTimeAtLocation)
+            // })
 
-            const filteredResults = sortedResults.filter((result) => {
+            // const filteredResults = sortedResults.filter((result) => {
+            //   return Date.parse(result.AdvertisedTimeAtLocation) < Date.parse("2016-08-25 23:59:00")
+            //       && Date.parse(result.AdvertisedTimeAtLocation) > Date.parse("2016-08-25 00:00:00")
+            // })
+
+            const filteredResults = results.filter((result) => {
               return Date.parse(result.AdvertisedTimeAtLocation) < Date.parse("2016-08-25 23:59:00")
                   && Date.parse(result.AdvertisedTimeAtLocation) > Date.parse("2016-08-25 00:00:00")
             })
